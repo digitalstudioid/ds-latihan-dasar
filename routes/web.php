@@ -98,6 +98,12 @@ Route::get('khususadmin', function() {
 	return 'Halaman ini hanya untuk admin.';
 })->middleware('auth');
 
+Route::group(['middleware' => 'web'], function() {
+	Route::get('adminpage', function() {
+		return 'Halaman ini hanya untuk admin.';
+	})->middleware('cekAdmin');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
