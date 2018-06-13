@@ -93,3 +93,11 @@ Route::get('halamanview3', function() {
 			'transaksi' => App\Transaksi::all());
 	return view('latihan.halamanview3', $data);
 });
+
+Route::get('khususadmin', function() {
+	return 'Halaman ini hanya untuk admin.';
+})->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
