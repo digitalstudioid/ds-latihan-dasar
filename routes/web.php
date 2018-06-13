@@ -40,4 +40,34 @@ Route::get('nama-pelanggan4', function() {
 	return $pelanggan;
 });
 
+Route::get('transaksi1', function() {
+	$transaksi = App\Transaksi::all();
 
+	foreach ($transaksi as $brg) {
+		echo $brg->barang . '<br>';
+	}
+});
+
+Route::get('transaksi2', function() {
+	$transaksi = App\Transaksi::all();
+
+	foreach ($transaksi as $brg) {
+		$pelanggan = App\Pelanggan::find($brg->pelanggan_id);
+		echo $brg->barang . ' order by '. $pelanggan->nama . '<br>';
+	}
+});
+
+Route::get('pelanggan/{id}', function($id) {
+	$pelanggan = App\Pelanggan::find($id);
+
+	echo '<pre>';
+	echo $pelanggan->nama . ' Pernah Transaksi :';
+	echo '<ul>';
+	
+	$transaksi = $pelanggan->transaksi;
+	foreach ($transaksi as $brg) {
+		echo '<li>' . $brg->barang . '</li>';
+	}
+
+	echo '</ul>';
+});
