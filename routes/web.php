@@ -71,3 +71,25 @@ Route::get('pelanggan/{id}', function($id) {
 
 	echo '</ul>';
 });
+
+Route::get('pelanggan1/{id}', 'PelangganController@Pelanggan1');
+Route::get('pelanggan2/{id}', 'PelangganController@Pelanggan2');
+
+Route::get('halamanview1', function() {
+	echo '<html><head><title>Halaman View</title></head><body>';
+	echo 'Ini hanya halaman view biasa.';
+	echo '</body></html>';
+});
+
+Route::get('halamanview2', function() {
+	return view('latihan.halamanview2');
+});
+
+Route::get('halamanview3', function() {
+	$data = array(
+			'var1' => 'Sepatu',
+			'var2' => 'Sandal',
+			'var3' => 'Kaos Kaki',
+			'transaksi' => App\Transaksi::all());
+	return view('latihan.halamanview3', $data);
+});
