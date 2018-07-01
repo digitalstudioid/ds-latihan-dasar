@@ -19,6 +19,9 @@ Clear Route cache: php artisan route:cache
 Clear View cache: php artisan view:clear
 Clear Config cache: php artisan config:cache
 
+
+https://laravel-news.com/learn-to-use-model-factories-in-laravel-5-1
+
 */
 
 Route::get('/', function () {
